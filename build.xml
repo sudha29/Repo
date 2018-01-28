@@ -48,7 +48,7 @@
     </junit>
  <junitreport todir="${main.report}">
   <fileset dir="${main.report}">
-   <include name="TEST-*.xml" />
+   <include name="*.xml" />
   </fileset>
   <report todir="${main.report}" />
  </junitreport>
@@ -60,9 +60,6 @@
     <delete>
         <fileset dir="${basedir}" includes="**/*.class" />
     </delete>
-	<delete>
-        <fileset dir="${basedir}" includes="**/*.xml" />
-    </delete>
-    <echo message="clean done" />
+	  <echo message="clean done" />
   </target>
 </project>
