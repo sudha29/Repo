@@ -40,7 +40,7 @@
           <pathelement location="${test.build.dir}"/>
         </classpath>
         <formatter type="xml" usefile="false" />
-        <batchtest>
+        <batchtest todir=".">
             <fileset dir="${test.src.dir}" includes="**/*Test*.java" />
         </batchtest>
     </junit>
