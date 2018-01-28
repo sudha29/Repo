@@ -2,6 +2,7 @@
 <project name="java-junit-template-project" default="test" basedir=".">
   <property name="main.build.dir" value="build/main" />  
   <property name="main.src.dir" value="src" />
+  <property name="main.report" value="report" />
   <property name="test.build.dir" value="build/test" />
   <property name="test.src.dir" value="test" />
 
@@ -34,16 +35,23 @@
   <!-- Test and build all files  -->
   <!-- To run this: use "ant" (default) or "ant run" -->
   <target name="run" depends="build">
+  <mkdir dir="${main.report}"/>
     <junit printsummary="on" haltonfailure="yes">
         <classpath>
           <path refid="classpath.test" />
           <pathelement location="${test.build.dir}"/>
         </classpath>
         <formatter type="xml" usefile="false" />
-        <batchtest todir=".">
+        <batchtest todir="${main.report}">
             <fileset dir="${test.src.dir}" includes="**/*Test*.java" />
         </batchtest>
     </junit>
+ <junitreport todir="${main.report}">
+  <fileset dir="${main.report}">
+   <include name="*.xml" />
+  </fileset>
+  <report todir="${main.report}" />
+ </junitreport>
   </target>
    
   <!-- delete all class files -->
@@ -51,6 +59,9 @@
   <target name="clean">
     <delete>
         <fileset dir="${basedir}" includes="**/*.class" />
+    </delete>
+	<delete>
+        <fileset dir="${basedir}" includes="**/*.xml" />
     </delete>
     <echo message="clean done" />
   </target>
