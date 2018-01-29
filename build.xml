@@ -39,11 +39,11 @@
     <junit printsummary="on" haltonfailure="yes">
         <classpath>
           <path refid="classpath.test" />
-          <pathelement location="${src.build.dir}"/>
+          <pathelement location="${test.build.dir}"/>
         </classpath>
         <formatter type="xml" usefile="false" />
         <batchtest todir="${main.report}">
-            <fileset dir="${main.src.dir}" includes="**/*HelloWorld*.java" />
+            <fileset dir="${test.src.dir}" includes="**/*Test*.java" />
         </batchtest>
     </junit>
  <junitreport todir="${main.report}">
